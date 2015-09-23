@@ -5,8 +5,14 @@ def main():
 
     parser = argparse.ArgumentParser(description="Program to visualize any changes about .git projects")
 
+    #For files
     parser.add_argument("--scan", "-s", help="Scan your home directory to find any .git projects", action="store_true")
     parser.add_argument("--check", "-c", help="Check the hidden configuration file - if any .git project is not referenced, it will be deleted", action="store_true")
+
+    #Action on git files
+    parser.add_argument("--list", "-l", help="List all git projects", action="store_true")
+
+    #Debug & version
     parser.add_argument("--debug", "-d", help="Debug mod - for developer only", action="store_true")
     parser.add_argument("--version", "-v", help="Version of the program", action="store_true")
 
