@@ -1,6 +1,7 @@
 def init():
     global ARGS
     global CONFIG_FILE_CONTENT
+    global CONFIG_FILE_NAME
     global CONFIG_FILE_PATH
 
     ARGS = []
