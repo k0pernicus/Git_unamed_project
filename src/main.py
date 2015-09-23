@@ -25,6 +25,7 @@ def main():
 
     #Action on git files
     parser.add_argument("--list", "-l", help="List all git projects", action="store_true")
+    parser.add_argument("--stats", "-st", help="Get stats for each project", action="store_true")
 
     #Debug & version
     parser.add_argument("--debug", "-d", help="Debug mod - for developer only", action="store_true")
