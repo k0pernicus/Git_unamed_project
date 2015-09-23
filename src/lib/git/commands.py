@@ -10,7 +10,7 @@ def list_git_projects():
         repo = Repo(entry)
         if repo.is_dirty():
             current_status = "DIRTY"
-        elif not "nothing to commit" in repo.git.status():
+        elif not "Your branch is up-to-date" in repo.git.status():
             current_status = "TO PUSH"
         else:
             current_status = "CLEAN"
