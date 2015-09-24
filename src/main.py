@@ -5,16 +5,24 @@ import os
 from os.path import expanduser
 
 from lib.git.commands import list_git_projects
+from lib.git.commands import list_git_projects
+
 from lib.scan import scan
 
 from lib.config.config import open_config_file
 from lib.config.config import clean_config_file
 from lib.config.config import close_config_file
 
+from lib.git.git import GitObj
+
 def load_paths_from_config_file():
     f = open_config_file()
     lib.settings.settings.CONFIG_FILE_CONTENT = f.readlines()
     close_config_file(f)
+
+def save_git_objects():
+    for entry in lib.settings.settings.CONFIG_FILE_CONTENT:
+        lib.settings.settings.GIT_OBJECTS.append(GitObj(entry))
 
 def main():
 
@@ -27,6 +35,7 @@ def main():
     #Action on git files
     parser.add_argument("--list", "-l", help="List all git projects", action="store_true")
     parser.add_argument("--stats", "-st", help="Get stats for each project", action="store_true")
+    parser.add_argument("--push", "-p", help="Push repos which have, for a clean repository, some commits not pushed", action="store_true")
 
     #Debug & version
     parser.add_argument("--debug", "-d", help="Debug mod - for developer only", action="store_true")
@@ -53,8 +62,13 @@ def main():
     if lib.settings.settings.ARGS.scan:
         scan()
 
+    save_git_objects()
+
     if lib.settings.settings.ARGS.list:
         list_git_projects()
+
+    if lib.settings.settings.ARGS.push:
+        push_ready_projects()
 
 if __name__ == '__main__':
     main()
