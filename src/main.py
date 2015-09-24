@@ -8,6 +8,7 @@ from lib.git.commands import list_git_projects
 from lib.scan import scan
 
 from lib.config.config import open_config_file
+from lib.config.config import clean_config_file
 from lib.config.config import close_config_file
 
 def load_paths_from_config_file():
@@ -40,6 +41,12 @@ def main():
     #Create an empty file if not exists
     if not os.path.exists(lib.settings.settings.CONFIG_FILE_PATH):
         os.mknod(lib.settings.settings.CONFIG_FILE_PATH)
+
+    if lib.settings.settings.ARGS.check:
+        f = open_config_file()
+        clean_config_file(f)
+        close_config_file(f)
+        scan()
 
     load_paths_from_config_file()
 

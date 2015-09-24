@@ -17,7 +17,7 @@ def scan():
     if lib.settings.settings.ARGS.scan == "~":
         default_walk_from = os.walk(expanduser("~"))
     else:
-        default_walk_from = os.walk(lib.settings.settings.ARGS.dir_to_scan)
+        default_walk_from = os.walk(lib.settings.settings.ARGS.scan)
 
     #Open the configuration file
     f = open_config_file()
