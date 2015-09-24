@@ -5,7 +5,7 @@ import os
 from os.path import expanduser
 
 from lib.git.commands import list_git_projects
-from lib.git.commands import list_git_projects
+from lib.git.commands import push_ready_projects
 
 from lib.scan import scan
 
