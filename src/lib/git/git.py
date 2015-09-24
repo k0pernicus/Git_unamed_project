@@ -14,7 +14,10 @@ class GitObj(object):
         pass
 
     def __str__(self):
-        return "\t[{0}] {1} -- {2} commits -- {3} untracked files".format(self.current_status, self.entry, self.all_commits, self.untracked_files)
+        if not self.current_status == "TO PUSH":
+            return "\t[{0}] {1} -- {2} commits -- {3} untracked files".format(self.current_status, self.entry, self.all_commits, self.untracked_files)
+        else:
+            return "\t[{0}] {1} -- {2} commits to push -- {3} untracked files".format(self.current_status, self.entry, self.commits_to_push, self.untracked_files)
 
     def check_entry(self, entry):
         if entry[-1] == '\n':
@@ -33,4 +36,8 @@ class GitObj(object):
             return "CLEAN"
 
     def return_nb_commits_to_push(self):
-        return 0
+        git_status = self.git_object.git.status()
+        if self.current_status == "TO PUSH":
+            split_git_status_0 = git_status.split("commits")[0]
+            split_git_status_0 = split_git_status_0.split('by')[1]
+            return int(split_git_status_0)
