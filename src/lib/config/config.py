@@ -22,7 +22,7 @@ def add_new_path(f, path_to_add):
     except:
         print("The path {0} canno't be added to {1}".format(path_to_add, f.name))
 
-def delete_new_path(f, path_to_delete):
+def delete_path_from_config_file(f, path_to_delete):
     try:
         entries = f.readlines()
         f.seek(0)
