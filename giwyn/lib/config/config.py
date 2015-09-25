@@ -1,7 +1,7 @@
-import lib.settings.settings
+import giwyn.lib.settings.settings
 
 def open_config_file():
-    return open(lib.settings.settings.CONFIG_FILE_PATH, "r+")
+    return open(giwyn.lib.settings.settings.CONFIG_FILE_PATH, "r+")
 
 def close_config_file(f):
     try:
