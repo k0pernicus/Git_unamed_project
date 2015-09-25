@@ -2,7 +2,7 @@ import giwyn.lib.settings.settings
 from git import *
 
 def list_git_projects():
-    print("List of git project:")
+    print("List of git projects:")
     #end="" -> avoid last '\n' character
     for git_object in giwyn.lib.settings.settings.GIT_OBJECTS:
         print(git_object)
