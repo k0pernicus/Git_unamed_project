@@ -12,6 +12,7 @@ from lib.scan import scan
 from lib.config.config import open_config_file
 from lib.config.config import clean_config_file
 from lib.config.config import close_config_file
+from lib.config.config import delete_path_from_config_file
 
 from lib.git.git import GitObj
 
@@ -22,15 +23,23 @@ def load_paths_from_config_file():
 
 def save_git_objects():
     for entry in lib.settings.settings.CONFIG_FILE_CONTENT:
-        lib.settings.settings.GIT_OBJECTS.append(GitObj(entry))
+        try:
+            lib.settings.settings.GIT_OBJECTS.append(GitObj(entry))
+        except Exception as e:
+            if lib.settings.settings.ARGS.debug:
+                print("[MAIN] Exception for {0}: {1}".format(entry[:-1], e))
+            f = open_config_file()
+            print("Git repository {0} not found...".format(entry[:-1]))
+            delete_path_from_config_file(f, entry)
+            close_config_file(f)
 
 def main():
 
     parser = argparse.ArgumentParser(description="Program to visualize any changes about .git projects")
 
     #For files
-    parser.add_argument("--scan", "-s", help="Scan from the argument directory to find any .git projects", default="~")
-    parser.add_argument("--check", "-c", help="Check the hidden configuration file - if any .git project is not referenced, it will be deleted", action="store_true")
+    parser.add_argument("--scan", "-s", help="Scan from the argument directory to find any git projects, and add them into the hidden configuration file")
+    parser.add_argument("--rescan", "-rs", help="Rescan from the argument directory to find any git projects - this command will replace the data in the hidden configuration file by the result of the scan")
 
     #Action on git files
     parser.add_argument("--list", "-l", help="List all git projects", action="store_true")
@@ -51,16 +60,18 @@ def main():
     if not os.path.exists(lib.settings.settings.CONFIG_FILE_PATH):
         os.mknod(lib.settings.settings.CONFIG_FILE_PATH)
 
-    if lib.settings.settings.ARGS.check:
+    load_paths_from_config_file()
+
+    if lib.settings.settings.ARGS.rescan:
         f = open_config_file()
         clean_config_file(f)
         close_config_file(f)
         scan()
-
-    load_paths_from_config_file()
+        load_paths_from_config_file()
 
     if lib.settings.settings.ARGS.scan:
         scan()
+        load_paths_from_config_file()
 
     save_git_objects()
 
