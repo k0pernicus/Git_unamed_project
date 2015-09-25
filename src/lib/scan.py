@@ -24,11 +24,13 @@ def scan():
 
     for path, dirs, files in default_walk_from:
         for d in dirs:
+            if lib.settings.settings.ARGS.debug:
+                print("current : {0}".format(os.path.join(path, d)))
             if d == ".git":
                 add_new_path(f, path)
                 #If debug mod, print out the path file
                 if lib.settings.settings.ARGS.debug:
-                    print("{0}".format(os.path.join(path, d)))
+                    print("\t FIND {0}".format(os.path.join(path, d)))
 
     #Close the configuration file
     close_config_file(f)
