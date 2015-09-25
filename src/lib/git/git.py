@@ -38,6 +38,7 @@ class GitObj(object):
     def return_nb_commits_to_push(self):
         git_status = self.git_object.git.status()
         if self.current_status == "TO PUSH":
+            split_git_status_0 = git_status.split("commit")[0]
             split_git_status_0 = git_status.split("commits")[0]
             split_git_status_0 = split_git_status_0.split('by')[1]
             return int(split_git_status_0)
