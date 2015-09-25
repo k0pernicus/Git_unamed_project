@@ -13,11 +13,10 @@ def scan():
     """
 
     #Update the field which contains all directories from the home dir of the user, or the directory to scan
-
-    if lib.settings.settings.ARGS.scan == "~":
+    if lib.settings.settings.ARGS.scan == "~" or lib.settings.settings.ARGS.rescan:
         default_walk_from = os.walk(expanduser("~"))
     else:
-        default_walk_from = os.walk(lib.settings.settings.ARGS.scan)
+        default_walk_from = os.walk(lib.settings.settings.ARGS.scan) or os.walk(lib.settings.settings.ARGS.rescan)
 
     #Open the configuration file
     f = open_config_file()
@@ -27,7 +26,8 @@ def scan():
             if lib.settings.settings.ARGS.debug:
                 print("current : {0}".format(os.path.join(path, d)))
             if d == ".git":
-                add_new_path(f, path)
+                if not path in lib.settings.settings.CONFIG_FILE_CONTENT:
+                    add_new_path(f, path)
                 #If debug mod, print out the path file
                 if lib.settings.settings.ARGS.debug:
                     print("\t FIND {0}".format(os.path.join(path, d)))
