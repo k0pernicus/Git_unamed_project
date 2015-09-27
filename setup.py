@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='giwyn',
-      version='0.3',
+      version='0.3.1',
       packages=find_packages(),
       description='A simple command to manage all your git clones',
       url='http://github.com/k0pernicus/giwyn',
