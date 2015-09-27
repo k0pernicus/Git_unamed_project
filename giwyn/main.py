@@ -4,17 +4,16 @@ import os
 
 from os.path import expanduser
 
-from giwyn.lib.git.commands import list_git_projects
-from giwyn.lib.git.commands import push_ready_projects
-
 from giwyn.lib.scan import scan
+
+from giwyn.lib.gitconf.commands import list_git_projects
+from giwyn.lib.gitconf.commands import push_ready_projects
+from giwyn.lib.gitconf.git_o import GitObj
 
 from giwyn.lib.config.config import open_config_file
 from giwyn.lib.config.config import clean_config_file
 from giwyn.lib.config.config import close_config_file
 from giwyn.lib.config.config import delete_path_from_config_file
-
-from giwyn.lib.git.git import GitObj
 
 def load_paths_from_config_file():
     f = open_config_file()
@@ -29,13 +28,13 @@ def save_git_objects():
             if giwyn.lib.settings.settings.ARGS.debug:
                 print("[MAIN] Exception for {0}: {1}".format(entry[:-1], e))
             f = open_config_file()
-            print("Git repository {0} not found...".format(entry[:-1]))
+            print("Git repository {0} removed in the configuration file...".format(entry[:-1]))
             delete_path_from_config_file(f, entry)
             close_config_file(f)
 
 def main():
 
-    parser = argparse.ArgumentParser(description="Program to visualize any changes about .git projects")
+    parser = argparse.ArgumentParser(prog="giwyn", description="Program to visualize any changes about .git projects")
 
     #For files
     parser.add_argument("--scan", "-s", help="Scan from the argument directory to find any git projects, and add them into the hidden configuration file")
@@ -47,7 +46,7 @@ def main():
 
     #Debug & version
     parser.add_argument("--debug", "-d", help="Debug mod - for developer only", action="store_true")
-    parser.add_argument("--version", "-v", help="Version of the program", action="store_true")
+    parser.add_argument("--version", "-v", help="Version of the program", action='version', version='%(prog)s 0.3.1')
 
     giwyn.lib.settings.settings.init()
 
