@@ -43,7 +43,6 @@ def main():
 
     #Action on git files
     parser.add_argument("--list", "-l", help="List all git projects", action="store_true")
-    parser.add_argument("--stats", "-st", help="Get stats for each project", action="store_true")
     parser.add_argument("--push", "-p", help="Push repos which have, for a clean repository, some commits not pushed", action="store_true")
 
     #Debug & version

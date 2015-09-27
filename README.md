@@ -20,7 +20,6 @@ Also, if Giwyn see that a git repository is deleted, he will automatically remov
 * ```--rescan```, ```'rs``` : **replace** data in your hidden configuration file by the result of the scan from your **HOME** directory, or another specified directory
 * ```--list```, ```-l``` : list all your git repositories, stored in the hidden configuration file
 * ```--push```, ```-p``` : push all your clean git repositories
-* ```--stats```, ```-st``` : print stats about your git repositories (like the number of total commits pushed)
 * ```--version```, ```-v``` : version of the software (for pip)
 * ```--debug```, ```-d``` : allow the debug mod
 
