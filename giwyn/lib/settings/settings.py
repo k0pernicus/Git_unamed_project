@@ -7,6 +7,6 @@ def init():
 
     ARGS = []
     CONFIG_FILE_CONTENT = []
-    CONFIG_FILE_NAME = ".git_project.txt"
+    CONFIG_FILE_NAME = ".giwyn"
     CONFIG_FILE_PATH = ""
     GIT_OBJECTS = []

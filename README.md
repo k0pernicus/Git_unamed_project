@@ -1,7 +1,7 @@
 # Giwyn
 
 Giwyn (for *Giwyn is what you need*) is a software to manage all your git clones, stored in your own computer.  
-Giwyn will scan your computer to search all ```.git``` directories, to list them in an hidden configuration file (```.git_project.txt```, in your **HOME** directory) and allows you to manage all of them with one simple command.
+Giwyn will scan your computer to search all ```.git``` directories, to list them in an hidden configuration file (```.giwyn```, in your **HOME** directory) and allows you to manage all of them with one simple command.
 
 # Usage
 
