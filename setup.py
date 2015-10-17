@@ -17,6 +17,7 @@ setup(name='giwyn',
       keywords='git development versioning package',
       install_requires=[
         'gitpython',
+        'colorama'
       ],
       entry_points={
         'console_scripts': [
