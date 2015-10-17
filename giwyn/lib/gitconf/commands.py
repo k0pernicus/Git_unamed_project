@@ -19,4 +19,12 @@ def push_ready_projects():
         print("There is no repository to push yet!")
 
 def pull_ready_projects():
-    pass
+    print("Repository to pull...")
+    any_repo_to_pull = False
+    for git_project in giwyn.lib.settings.settings.GIT_OBJECTS:
+        if git_project.current_status == "CLEAN":
+            print("Pulling {0}...".format(git_project.entry))
+            git_project.git_object.remote().pull()
+            any_repo_to_pull = True
+    if not any_repo_to_pull:
+        print("There is no repository to pull yet!")
