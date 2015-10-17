@@ -27,6 +27,10 @@ Also, if Giwyn see that a git repository is deleted, he will automatically remov
 
 With pip3 : ```sudo pip3 install giwyn```, or ```sudo pip3 install giwyn --upgrade``` if you already have ```giwyn```
 
+# Comments
+
+If you want to store your username and password for each git repository, make sure to add this command for each one : ```git config credential.helper store```
+
 # Main developer
 
 Carette Antonin
