@@ -17,3 +17,6 @@ def push_ready_projects():
             any_repo_to_push = True
     if not any_repo_to_push:
         print("There is no repository to push yet!")
+
+def pull_ready_projects():
+    pass
