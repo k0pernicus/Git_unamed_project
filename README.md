@@ -25,7 +25,7 @@ Also, if Giwyn see that a git repository is deleted, he will automatically remov
 
 # Installation
 
-With pip3 : ```sudo pip3 install giwyn```
+With pip3 : ```sudo pip3 install giwyn```, or ```sudo pip3 install giwyn --upgrade``` if you already have ```giwyn```
 
 # Main developer
 
