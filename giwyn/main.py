@@ -8,7 +8,9 @@ from os.path import expanduser
 from giwyn.lib.scan import scan
 
 from giwyn.lib.gitconf.commands import list_git_projects
+from giwyn.lib.gitconf.commands import pull_ready_projects
 from giwyn.lib.gitconf.commands import push_ready_projects
+
 from giwyn.lib.gitconf.git_o import GitObj
 
 from giwyn.lib.config.config import open_config_file
