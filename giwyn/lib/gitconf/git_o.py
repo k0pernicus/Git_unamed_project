@@ -46,5 +46,4 @@ class GitObj(object):
                 split_git_status_0 = split_git_status_0.split('by')[1]
                 return int(split_git_status_0)
             else:
-                self.current_status = "CLEAN"
                 return 0
