@@ -46,7 +46,7 @@ def main():
 
     #Debug & version
     parser.add_argument("--debug", "-d", help="Debug mod - for developer only", action="store_true")
-    parser.add_argument("--version", "-v", help="Version of the program", action='version', version='%(prog)s 0.3.1')
+    parser.add_argument("--version", "-v", help="Version of the program", action='version', version='%(prog)s 0.4')
 
     giwyn.lib.settings.settings.init()
 
