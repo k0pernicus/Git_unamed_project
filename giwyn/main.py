@@ -43,7 +43,8 @@ def main():
 
     #Action on git files
     parser.add_argument("--list", "-l", help="List all git projects", action="store_true")
-    parser.add_argument("--push", "-p", help="Push repos which have, for a clean repository, some commits not pushed", action="store_true")
+    parser.add_argument("--pull", "-pl", help="Pull repos which have, for a clean repository, some commits to pull", action="store_true")
+    parser.add_argument("--push", "-ps", help="Push repos which have, for a clean repository, some commits not pushed", action="store_true")
 
     #Debug & version
     parser.add_argument("--debug", "-d", help="Debug mod - for developer only", action="store_true")
@@ -81,6 +82,9 @@ def main():
 
     if giwyn.lib.settings.settings.ARGS.push:
         push_ready_projects()
+
+    if giwyn.lib.settings.settings.ARGS.pull:
+        pull_ready_projects()
 
 if __name__ == '__main__':
     main()
