@@ -24,7 +24,9 @@ def pull_ready_projects():
     for git_project in giwyn.lib.settings.settings.GIT_OBJECTS:
         if git_project.current_status == "CLEAN":
             print("Pulling {0}...".format(git_project.entry))
-            git_project.git_object.remote().pull()
-            any_repo_to_pull = True
+            #Pull from origin
+            if git_project.git_object.remotes != []:
+                git_project.git_object.remotes.origin.pull()
+                any_repo_to_pull = True
     if not any_repo_to_pull:
         print("There is no repository to pull yet!")
