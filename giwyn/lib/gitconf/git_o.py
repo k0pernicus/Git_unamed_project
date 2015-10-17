@@ -1,3 +1,4 @@
+from colorama import Fore
 from git import *
 
 class GitObj(object):
@@ -14,10 +15,12 @@ class GitObj(object):
         pass
 
     def __str__(self):
+        status_color = Fore.RED if self.current_status == "DIRTY" else Fore.GREEN
+        entry_from_home = "~/{0}".format("/".join(self.entry.split("/")[3:]))
         if not self.current_status == "TO PUSH":
-            return "\t[{0}] {1} -- {2} commit(s) -- {3} untracked file(s)".format(self.current_status, self.entry, self.all_commits, self.untracked_files)
+            return "\t[{0}] {1} -- {2} commit(s) -- {3} untracked file(s)".format(status_color + self.current_status + Fore.RESET, entry_from_home, self.all_commits, self.untracked_files)
         else:
-            return "\t[{0}] {1} -- {2} commit(s) to push -- {3} untracked file(s)".format(self.current_status, self.entry, self.commits_to_push, self.untracked_files)
+            return "\t[{0}] {1} -- {2} commit(s) to push -- {3} untracked file(s)".format(Fore.BLUE + self.current_status + Fore.RESET, entry_from_home, self.commits_to_push, self.untracked_files)
 
     def check_entry(self, entry):
         if entry[-1] == '\n':
