@@ -41,9 +41,10 @@ class GitObj(object):
     def return_nb_commits_to_push(self):
         git_status = self.git_object.git.status()
         if self.current_status == "TO PUSH":
-            if not "working directory clean":
+            if not "Your branch is ahead of":
                 split_git_status_0 = git_status.split("commit")[0] or git_status.split("commits")[0]
                 split_git_status_0 = split_git_status_0.split('by')[1]
                 return int(split_git_status_0)
             else:
+                self.current_status = "CLEAN"
                 return 0
