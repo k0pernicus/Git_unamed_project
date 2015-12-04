@@ -44,7 +44,6 @@ def main():
     parser.add_argument("--rescan", "-rs", help="Rescan from the argument directory to find any git projects - this command will replace the data in the hidden configuration file by the result of the scan")
 
     #Action on git files
-    parser.add_argument("--list", "-l", help="List all git projects", action="store_true")
     parser.add_argument("--pull", "-pl", help="Pull repos which have, for a clean repository, some commits to pull", action="store_true")
     parser.add_argument("--push", "-ps", help="Push repos which have, for a clean repository, some commits not pushed", action="store_true")
 
@@ -63,6 +62,8 @@ def main():
     #Create an empty file if not exists
     if not os.path.exists(giwyn.lib.settings.settings.CONFIG_FILE_PATH):
         os.mknod(giwyn.lib.settings.settings.CONFIG_FILE_PATH)
+        # Scan all directories
+        scan()
 
     load_paths_from_config_file()
 
@@ -79,7 +80,7 @@ def main():
 
     save_git_objects()
 
-    if giwyn.lib.settings.settings.ARGS.list:
+    if not giwyn.lib.settings.settings.ARGS.push and not giwyn.lib.settings.settings.ARGS.pull:
         list_git_projects()
 
     if giwyn.lib.settings.settings.ARGS.push:
