@@ -7,7 +7,7 @@ Giwyn will scan your computer to search all ```.git``` directories, to list them
 
 Steps:
 
-0.  First time, let ```giwyn``` scan your computer **from a specific directory** (like *~* for your **HOME** directory) by this command : ```giwyn --scan the_directory_you_want_to_scan```.  *This step can take a while...*  
+0.  First time, let ```giwyn``` scan your computer **from a specific directory** (like *~* for your **HOME** directory).  *This step can take a while...*  
 1.  After that, you can use some commands to specify what ```giwyn``` has to do : list all your git projects and their properties, to verify if your commits has to be push, etc...  
 
 If you don't ask to Giwyn to scan your repository again, Giwyn will work only on git repositories saved in the hidden configuration file.  
@@ -17,9 +17,9 @@ Also, if Giwyn see that a git repository is deleted, he will automatically remov
 
 * ```--help```, ```-h``` : print the help
 * ```--scan```, ```-s``` : scan your entire repository from your **HOME** directory, or another specified directory, and append the result of this command in the hidden configuration file
-* ```--rescan```, ```'rs``` : **replace** data in your hidden configuration file by the result of the scan from your **HOME** directory, or another specified directory
-* ```--list```, ```-l``` : list all your git repositories, stored in the hidden configuration file
-* ```--push```, ```-p``` : push all your clean git repositories
+* ```--rescan```, ```'R``` : **replace** data in your hidden configuration file by the result of the scan from your **HOME** directory, or another specified directory
+* ```--pull```, ```-p``` : pull all your clean git repositories
+* ```--push```, ```-P``` : push all your clean git repositories
 * ```--version```, ```-v``` : version of the software (for pip)
 * ```--debug```, ```-d``` : allow the debug mod
 
