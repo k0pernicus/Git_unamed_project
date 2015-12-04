@@ -63,6 +63,7 @@ def main():
     if not os.path.exists(giwyn.lib.settings.settings.CONFIG_FILE_PATH):
         os.mknod(giwyn.lib.settings.settings.CONFIG_FILE_PATH)
         # Scan all directories
+        giwyn.lib.settings.settings.ARGS.scan = "~"
         scan()
 
     load_paths_from_config_file()
