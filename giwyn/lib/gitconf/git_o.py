@@ -10,6 +10,7 @@ class GitObj(object):
         self.all_commits = len(list(self.git_object.iter_commits()))
         self.commits_to_push = self.return_nb_commits_to_push()
         self.untracked_files = len(self.git_object.untracked_files)
+        self.ref = self.git_object.head.reference
 
     def __del__(self):
         pass
