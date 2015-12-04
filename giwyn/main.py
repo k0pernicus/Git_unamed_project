@@ -41,11 +41,11 @@ def main():
 
     #For files
     parser.add_argument("--scan", "-s", help="Scan from the argument directory to find any git projects, and add them into the hidden configuration file")
-    parser.add_argument("--rescan", "-rs", help="Rescan from the argument directory to find any git projects - this command will replace the data in the hidden configuration file by the result of the scan")
+    parser.add_argument("--rescan", "-R", help="Rescan from the argument directory to find any git projects - this command will replace the data in the hidden configuration file by the result of the scan")
 
     #Action on git files
-    parser.add_argument("--pull", "-pl", help="Pull repos which have, for a clean repository, some commits to pull", action="store_true")
-    parser.add_argument("--push", "-ps", help="Push repos which have, for a clean repository, some commits not pushed", action="store_true")
+    parser.add_argument("--pull", "-p", help="Pull repos which have, for a clean repository, some commits to pull", action="store_true")
+    parser.add_argument("--push", "-P", help="Push repos which have, for a clean repository, some commits not pushed", action="store_true")
 
     #Debug & version
     parser.add_argument("--debug", "-d", help="Debug mod - for developer only", action="store_true")
